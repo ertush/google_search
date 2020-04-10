@@ -15,7 +15,7 @@
 ModuleVersion = '0.0.12'
 
 # Supported PSEditions
-# CompatiblePSEditions = @()
+# CompatiblePSEditions = @("Powershell 5, 6 and 7")
 
 # ID used to uniquely identify this module
 GUID = '34c6a0bf-9414-4d7e-8154-9a89c3beb085'
@@ -33,7 +33,7 @@ Copyright = '(c) ERIC. All rights reserved.'
 Description = 'Script module to use search engine and Open urls from powershell. Supports msedge and chrome browsers.'
 
 # Minimum version of the PowerShell engine required by this module
-# PowerShellVersion = ''
+# PowerShellVersion = 'Powershell 5'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
@@ -87,7 +87,7 @@ AliasesToExport = @()
 # ModuleList = @()
 
 # List of all files packaged with this module
-# FileList = @()
+# FileList = @("google_search.psm1", "google_search.psd1")
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
@@ -95,13 +95,13 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        # Tags = @("powershell", "google search", "msedge", "chrome")
 
         # A URL to the license for this module.
         # LicenseUri = ''
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        # ProjectUri = 'https://github.com/ertush/google_search.git'
 
         # A URL to an icon representing this module.
         # IconUri = ''
