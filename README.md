@@ -1,7 +1,7 @@
 ## Google_Search
 
- >>Script module to use search engine and Open urls from powershell. Supports msedge and chrome browsers.
- >>You can also find the module from []("https://www.powershellgallery.com") 
+ Script module to use search engine and Open urls from powershell. Supports msedge and chrome browsers.
+ You can also find the module from [PowershellGallery](https://www.powershellgallery.com) 
 
 ## Installation
 
