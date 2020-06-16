@@ -45,6 +45,10 @@ function Search-Google {
                     Start-Process microsoft-edge:https://www.google.com/search?q=$parsed_string
                }
 
+               if($browser -eq "firefox"){
+                    Start-Process firefox https://www.google.com/search?q=$parsed_string
+               }
+
                if ($isIncognito) {
 
                     cmd /c start $browser  https://www.google.com/search?q=$parsed_string -incognito
@@ -97,6 +101,10 @@ PS > Open-Site https://save-the-planet.org microsoft-edge
      process {
 
           if (-not $($url -eq "")) {
+
+               if ($browser -eq "firefox") {
+                    Start-Process firefox $url
+               }
               
                if ($browser -eq "msedge") {
                     Start-Process microsoft-edge:$url
@@ -120,3 +128,69 @@ PS > Open-Site https://save-the-planet.org microsoft-edge
      }
 
 }
+
+function Search-Youtube {
+
+     <#
+     .SYNOPSIS
+      Search youtube from powershell. Supports Powershell:^5
+     .DESCRIPTION
+      Parse youtube search query from powershell commandline to open in browser of choice
+     .FUNCTIONALITY
+      Search-Youtube <search query> <browser>
+     .EXAMPLE
+      Search-Youtube "Latest Hiphop 2020" msedge
+
+      PS > Search-Youtube Live chrome
+     
+     #>
+     
+          [CmdletBinding()]
+     
+          Param(
+               [parameter(mandatory = $true, position = 1)]
+               [string]
+               $query,
+     
+               [parameter(mandatory = $true, position = 2)]
+               [string]
+               $browser,
+     
+               [parameter(position = 3)]
+               [switch]
+               $isIncognito
+          )
+     
+          begin {
+               $ErrorActionPreference = 'SilentlyContinue'
+          }
+          process {
+     
+               if (-not $($query -eq "")) {
+                   
+                    if ($browser -eq "firefox") {
+                         Open-Site https://youtube.com/results?search_query=$query firefox
+                    }
+
+                    if ($browser -eq "msedge") {
+                         Open-Site https://youtube.com/results?search_query=$query msedge
+                    }
+                    else{
+                         if ($isIncognito){
+                              Open-Site https://youtube.com/results?search_query=$query $browser -incognito
+                         }
+                         else{
+                              Open-Site https://youtube.com/results?search_query=$query $browser
+                         }
+     
+                    }
+                    
+     
+          
+               }
+          }
+          end {
+     
+          }
+     
+     }
