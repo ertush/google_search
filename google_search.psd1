@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.0.13'
+ModuleVersion = '0.0.14'
 
 # Supported PSEditions
 # CompatiblePSEditions = @("Powershell 5, 6 and 7")
@@ -87,7 +87,7 @@ AliasesToExport = @()
 # ModuleList = @()
 
 # List of all files packaged with this module
-FileList = @("google_search.psm1", "google_search.psd1")
+FileList = @("google_search.psm1", "google_search.psd1", "LICENSE")
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
@@ -95,13 +95,13 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @("powershell", "google search", "msedge", "chrome")
+        Tags = @("powershell", "search", "msedge", "chrome")
 
         # A URL to the license for this module.
         # LicenseUri = ''
 
         # A URL to the main website for this project.
-        # ProjectUri = 'https://github.com/ertush/google_search.git'
+        ProjectUri = 'https://github.com/ertush/google_search.git'
 
         # A URL to an icon representing this module.
         # IconUri = ''
