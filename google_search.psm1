@@ -41,6 +41,10 @@ function Search-Google {
      process {
  
           if ( -not $($browser -eq "")) {
+               if ($browser -eq "brave") {
+                    Start-Process brave https://www.google.com/search?q=$parsed_string
+               }
+
                if ($browser -eq "msedge") {
                     Start-Process microsoft-edge:https://www.google.com/search?q=$parsed_string
                }
@@ -102,8 +106,8 @@ PS > Open-Site https://save-the-planet.org microsoft-edge
 
           if (-not $($url -eq "")) {
 
-               if ($browser -eq "firefox") {
-                    Start-Process firefox $url
+               if ($browser -eq "brave") {
+                    Start-Process brave $url
                }
               
                if ($browser -eq "msedge") {
@@ -167,6 +171,10 @@ function Search-Youtube {
           process {
      
                if (-not $($query -eq "")) {
+
+                    if ($browser -eq "brave") {
+                         Open-Site https://youtube.com/results?search_query=$query brave
+                    }
                    
                     if ($browser -eq "firefox") {
                          Open-Site https://youtube.com/results?search_query=$query firefox
