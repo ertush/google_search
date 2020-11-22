@@ -1,0 +1,14 @@
+name: Publish google_search Module to PowerShell Gallery 
+on: push
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: pcgeek86/publish-powershell-module-action@v19
+      id: publish-module
+      with:
+        modulePath: google_search
+        NuGetApiKey: ${{ secrets.PS_GALLERY_KEY }}
+   
+
