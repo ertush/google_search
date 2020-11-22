@@ -323,6 +323,7 @@ function Search-Youtube {
           )
      
           begin {
+               $parsed_string = $searchString.replace(' ', '+');
                $ErrorActionPreference = 'SilentlyContinue'
           }
           process {
