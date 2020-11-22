@@ -64,8 +64,7 @@ function Search-Google {
                     cmd /c start $browser  https://www.google.com/search?q=$parsed_string -incognito
 
                }
-
-               Start-Process $browser https://www.google.com/search?q=$parsed_string 
+ 
                
           }
      }
@@ -137,8 +136,6 @@ function Search-DuckDuckGo {
                     cmd /c start $browser  https://duckduckgo.com/?q=$parsed_string -incognito
 
                }
-
-               Start-Process $browser https://duckduckgo.com/?q=$parsed_string 
                
           }
      }
@@ -211,8 +208,6 @@ function Search-Bing {
      
                     }
      
-                    Start-Process $browser https://www.bing.com/search?q=$parsed_string 
-                    
                }
           }
           end {
