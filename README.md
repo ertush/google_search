@@ -5,10 +5,25 @@
 
 ## Installation
 
- ```Install-Module -Name google_search -RequiredVersion 0.1.15``` to update script module run
+ ```Install-Module -Name google_search -RequiredVersion 0.1.15``` to update to the latest script module run
  ```Update-Module google_search```
 
+To load the latest uptodate module automatically to your powershell or pwsh, add the following to (```$profile```) Microsoft.PowerShell_profile.ps1
 
+ ```powershell
+    function getLatestVerison() {
+    Param(
+        [Parameter(Mandatory=$true, Position=0)]
+        [string]
+        $module_name
+    )
+    $versions=@(cmd /c dir /O-N /b %USERPROFILE%\Documents\PowerShell\Modules\$module_name\);
+    return $versions[0];
+    }
+
+    import-module ~\Documents\PowerShell\Modules\google_search\$(getLatestVerison -module_name "google_search")\google_search.psm1
+    import-module ~\Documents\PowerShell\Modules\ping_scan\$(getLatestVerison -module_name "ping_scan")\ping_scan.psm1
+```
 ## Dependecies
 
  None
