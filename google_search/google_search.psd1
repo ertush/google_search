@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.16'
+ModuleVersion = '0.1.17'
 
 # Supported PSEditions
 # CompatiblePSEditions = @("Powershell 5, 6 and 7")
@@ -72,7 +72,7 @@ PowerShellVersion = '5.0.0'
 FunctionsToExport = @('Search-Google', 'Open-Site', 'Search-Youtube', 'Search-DuckDuckGo', 'Search-Bing')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = @()
+CmdletsToExport = @('Search-Google', 'Open-Site', 'Search-Youtube', 'Search-DuckDuckGo', 'Search-Bing')
 
 # Variables to export from this module
 VariablesToExport = '*'
