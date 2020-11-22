@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.18'
+ModuleVersion = '0.0.16'
 
 # Supported PSEditions
 # CompatiblePSEditions = @("Powershell 5, 6 and 7")
@@ -33,7 +33,7 @@ Copyright = '(c) ERIC. All rights reserved.'
 Description = 'Script module to use search engine and Open urls from powershell. Supports msedge, chrome, firefox and brave browsers.'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '5.1'
+# PowerShellVersion = '5.1'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
@@ -48,7 +48,7 @@ PowerShellVersion = '5.1'
 # ClrVersion = ''
 
 # Processor architecture (None, X86, Amd64) required by this module
-  ProcessorArchitecture = 'Amd64'
+# ProcessorArchitecture = 'Amd64'
 
 # Modules that must be imported into the global environment prior to importing this module
 # RequiredModules = @()
@@ -76,13 +76,13 @@ FunctionsToExport = @("Search-Google",
                       "Search-Bing")
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = '*'
+CmdletsToExport = @()
 
 # Variables to export from this module
 VariablesToExport = '*'
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = '*'
+AliasesToExport = @()
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -91,7 +91,7 @@ AliasesToExport = '*'
 # ModuleList = @()
 
 # List of all files packaged with this module
-FileList = @("google_search.psm1", "google_search.psd1", "LICENSE")
+FileList = @("google_search.psm1", "google_search.psd1")
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
