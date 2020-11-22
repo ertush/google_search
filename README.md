@@ -5,7 +5,8 @@
 
 ## Installation
 
- ```Install-Module -Name google_search``` 
+ ```Install-Module -Name google_search -RequiredVersion 0.1.15``` to update script module run
+ ```Update-Module google_search```
 
 
 ## Dependecies
@@ -16,3 +17,6 @@
 
  * Open-Site
  * Search-Google
+ * Search-DuckDuckGo
+ * Search-Youtube
+ * Search-Bing

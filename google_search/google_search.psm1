@@ -2,6 +2,8 @@
 ## Search Engines APIs
 ###################################################################
 
+# Search-Google
+
 function Search-Google {
 
 <#
@@ -72,6 +74,8 @@ function Search-Google {
      }
 
 }
+
+# Search-DuckDuckGo
 
 function Search-DuckDuckGo {
 
@@ -144,6 +148,79 @@ function Search-DuckDuckGo {
 
 }
 
+# Search-Bing
+
+function Search-Bing {
+
+     <#
+     .SYNOPSIS
+      Search from powershell console
+     .DESCRIPTION
+      Parse Microsoft Bing searches on powershell commandline
+     .FUNCTIONALITY
+      Search-Bing <search string> <browser> <browser options> 
+     .EXAMPLE
+      Search-Bing 'the Tallest Mountain in the world' chrome
+          
+      PS >  Search-Bing "guinnes book of record 2019" msedge
+           
+      PS >  Search-Bing COVID-19 chrome $true ; where '$true' is endabling incongito mode in brave or chrome browsers
+     #>
+     
+          [CmdletBinding()]
+     
+          Param(
+               [parameter(mandatory = $true, position = 1)]
+               [string]
+               $searchString,
+     
+               [parameter(mandatory = $true, position = 2)]
+               [string]
+               $browser,
+          
+               [parameter(position = 3)]
+               [switch]
+               $isIncognito
+               
+               
+          
+          )
+     
+          begin {
+               $parsed_string = $searchString.replace(' ', '+');
+               $ErrorActionPreference = 'SilentlyContinue'
+          }
+          process {
+      
+               if ( -not $($browser -eq "")) {
+                    if ($browser -eq "brave") {
+                         Start-Process brave https://www.bing.com/search?q=$parsed_string
+                    }
+     
+                    if ($browser -eq "msedge") {
+                         Start-Process microsoft-edge:https://www.bing.com/search?q=$parsed_string
+                    }
+     
+                    if($browser -eq "firefox"){
+                         Start-Process firefox https://www.bing.com/search?q=$parsed_string
+                    }
+     
+                    if ($isIncognito) {
+     
+                         cmd /c start $browser  https://www.bing.com/search?q=$parsed_string -incognito
+     
+                    }
+     
+                    Start-Process $browser https://www.bing.com/search?q=$parsed_string 
+                    
+               }
+          }
+          end {
+          
+          }
+     
+     }
+     
 ###################################################################
 ## Other Search Engine Utility APIs
 ###################################################################
