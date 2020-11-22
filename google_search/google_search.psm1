@@ -332,24 +332,25 @@ function Search-Youtube {
 
                     if ($browser -eq "brave") {
                          Open-Site https://youtube.com/results?search_query=$parsed_query brave
+                         exit
                     }
                    
                     if ($browser -eq "firefox") {
                          Open-Site https://youtube.com/results?search_query=$parsed_query firefox
+                         exit
                     }
 
                     if ($browser -eq "msedge") {
                          Open-Site https://youtube.com/results?search_query=$parsed_query msedge
+                         exit
                     }
-                    else{
-                         if ($isIncognito){
-                              Open-Site https://youtube.com/results?search_query=$parsed_query $browser -incognito
-                         }
-                         else{
-                              Open-Site https://youtube.com/results?search_query=$parsed_query $browser
-                         }
-     
+                    
+                    if ($isIncognito){
+                          Open-Site https://youtube.com/results?search_query=$parsed_query $browser -incognito
+                          exit
                     }
+                        
+                    
                     
      
           
