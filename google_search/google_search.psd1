@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.0.19'
+ModuleVersion = '0.0.20'
 
 # Supported PSEditions
 # CompatiblePSEditions = @("Powershell 5, 6 and 7")
