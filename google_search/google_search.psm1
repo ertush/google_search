@@ -323,7 +323,7 @@ function Search-Youtube {
           )
      
           begin {
-               $parsed_string = $searchString.replace(' ', '+');
+               $parsed_query = $query.replace(' ', '+');
                $ErrorActionPreference = 'SilentlyContinue'
           }
           process {
@@ -331,22 +331,22 @@ function Search-Youtube {
                if (-not $($query -eq "")) {
 
                     if ($browser -eq "brave") {
-                         Open-Site https://youtube.com/results?search_query=$query brave
+                         Open-Site https://youtube.com/results?search_query=$parsed_query brave
                     }
                    
                     if ($browser -eq "firefox") {
-                         Open-Site https://youtube.com/results?search_query=$query firefox
+                         Open-Site https://youtube.com/results?search_query=$parsed_query firefox
                     }
 
                     if ($browser -eq "msedge") {
-                         Open-Site https://youtube.com/results?search_query=$query msedge
+                         Open-Site https://youtube.com/results?search_query=$parsed_query msedge
                     }
                     else{
                          if ($isIncognito){
-                              Open-Site https://youtube.com/results?search_query=$query $browser -incognito
+                              Open-Site https://youtube.com/results?search_query=$parsed_query $browser -incognito
                          }
                          else{
-                              Open-Site https://youtube.com/results?search_query=$query $browser
+                              Open-Site https://youtube.com/results?search_query=$parsed_query $browser
                          }
      
                     }
