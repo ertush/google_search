@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.17'
+ModuleVersion = '0.1.15'
 
 # Supported PSEditions
 # CompatiblePSEditions = @("Powershell 5, 6 and 7")
@@ -33,7 +33,7 @@ Copyright = '(c) ERIC. All rights reserved.'
 Description = 'Script module to use search engine and Open urls from powershell. Supports msedge, chrome, firefox and brave browsers.'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '5.0.0'
+PowerShellVersion = '5.1'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
@@ -69,16 +69,20 @@ PowerShellVersion = '5.0.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Search-Google', 'Open-Site', 'Search-Youtube', 'Search-DuckDuckGo', 'Search-Bing')
+FunctionsToExport = @("Search-Google",
+                      "Open-Site", 
+                      "Search-Youtube",
+                      "Search-DuckDuckGo", 
+                      "Search-Bing")
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = @('Search-Google', 'Open-Site', 'Search-Youtube', 'Search-DuckDuckGo', 'Search-Bing')
+CmdletsToExport = '*'
 
 # Variables to export from this module
 VariablesToExport = '*'
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = '*'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
