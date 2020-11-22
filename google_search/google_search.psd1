@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.15'
 
 # Supported PSEditions
-CompatiblePSEditions = @("Powershell 5, 6 and 7")
+# CompatiblePSEditions = @("Powershell 5, 6 and 7")
 
 # ID used to uniquely identify this module
 GUID = '34c6a0bf-9414-4d7e-8154-9a89c3beb085'
