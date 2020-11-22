@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.0.15'
+ModuleVersion = '0.0.16'
 
 # Supported PSEditions
 # CompatiblePSEditions = @("Powershell 5, 6 and 7")
@@ -30,7 +30,7 @@ CompanyName = 'Techcloud ltd'
 Copyright = '(c) ERIC. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Script module to use search engine and Open urls from powershell. Supports msedge and chrome browsers.'
+Description = 'Script module to use search engine and Open urls from powershell. Supports msedge, chrome, firefox and brave browsers.'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '7.0.0'
@@ -69,7 +69,7 @@ PowerShellVersion = '7.0.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Search-Google', 'Open-Site', 'Search-Youtube'
+FunctionsToExport = 'Search-Google', 'Open-Site', 'Search-Youtube', 'Search-DuckDuckGo'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -95,7 +95,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @("powershell", "search", "msedge", "chrome")
+        Tags = @("powershell", "searchquery", "msedge", "chrome", "firefox", "dudckduckgo", "google", "brave", "browser")
 
         # A URL to the license for this module.
         # LicenseUri = ''

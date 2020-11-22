@@ -1,3 +1,7 @@
+###################################################################
+## Search Engines APIs
+###################################################################
+
 function Search-Google {
 
 <#
@@ -12,7 +16,7 @@ function Search-Google {
      
  PS > Search-google "guinnes book of record 2019" msedge
       
- PS > Search-google COVID-19 chrome $true ; where '$true' is endabling incongito mode
+ PS > Search-google COVID-19 chrome $true ; where '$true' is endabling incongito mode in brave or chrome browsers
 #>
 
      [CmdletBinding()]
@@ -68,6 +72,82 @@ function Search-Google {
      }
 
 }
+
+function Search-DuckDuckGo {
+
+<#
+.SYNOPSIS
+ Search from powershell console
+.DESCRIPTION
+ Parse duckduckgo searches on powershell commandline
+.FUNCTIONALITY
+ Search-DuckDuckGo <search string> <browser> <browser options> 
+.EXAMPLE
+ Search-DuckDuckGo 'the Tallest Mountain in the world' chrome
+     
+ PS >  Search-DuckDuckGo "guinnes book of record 2019" msedge
+      
+ PS >  Search-DuckDuckGo COVID-19 chrome $true ; where '$true' is endabling incongito mode in brave or chrome browsers
+#>
+
+     [CmdletBinding()]
+
+     Param(
+          [parameter(mandatory = $true, position = 1)]
+          [string]
+          $searchString,
+
+          [parameter(mandatory = $true, position = 2)]
+          [string]
+          $browser,
+     
+          [parameter(position = 3)]
+          [switch]
+          $isIncognito
+          
+          
+     
+     )
+
+     begin {
+          $parsed_string = $searchString.replace(' ', '+');
+          $ErrorActionPreference = 'SilentlyContinue'
+     }
+     process {
+ 
+          if ( -not $($browser -eq "")) {
+               if ($browser -eq "brave") {
+                    Start-Process brave https://duckduckgo.com/?q=$parsed_string
+               }
+
+               if ($browser -eq "msedge") {
+                    Start-Process microsoft-edge:https://duckduckgo.com/?q=$parsed_string
+               }
+
+               if($browser -eq "firefox"){
+                    Start-Process firefox https://duckduckgo.com/?q=$parsed_string
+               }
+
+               if ($isIncognito) {
+
+                    cmd /c start $browser  https://duckduckgo.com/?q=$parsed_string -incognito
+
+               }
+
+               Start-Process $browser https://duckduckgo.com/?q=$parsed_string 
+               
+          }
+     }
+     end {
+     
+     }
+
+}
+
+###################################################################
+## Other Search Engine Utility APIs
+###################################################################
+
 function Open-Site {
 
 <#
