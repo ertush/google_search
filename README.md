@@ -22,7 +22,6 @@ To load the latest uptodate module automatically to your powershell or pwsh, add
     }
 
     import-module ~\Documents\PowerShell\Modules\google_search\$(getLatestVerison -module_name "google_search")\google_search.psm1
-    import-module ~\Documents\PowerShell\Modules\ping_scan\$(getLatestVerison -module_name "ping_scan")\ping_scan.psm1
 ```
 ## Dependecies
 
