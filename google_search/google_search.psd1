@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.0.21'
+ModuleVersion = '1.1.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @("Powershell 5, 6 and 7")
@@ -91,7 +91,14 @@ AliasesToExport = @()
 # ModuleList = @()
 
 # List of all files packaged with this module
-FileList = @("google_search.psm1", "google_search.psd1")
+FileList = @("./google_search.psm1", 
+             "./google_search.psd1",
+             "./google_search.Tests.ps1", 
+             "./test/open-site.Tests.ps1",
+             "./test/search-google.Tests.ps1"
+             "./test/search-bing.Tests.ps1",
+             "./test/search-youtube.Tests.ps1",
+             "./test/search-duckduckgo.Tests.ps1")
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{

@@ -10,7 +10,7 @@ function Search-Google {
 .SYNOPSIS
  Search from powershell console
 .DESCRIPTION
- Parse google searches on powershell commandline
+ Parse google searches on powershell commandline. 
 .FUNCTIONALITY
  Search-google <search string> <browser> <browser options> 
 .EXAMPLE
@@ -19,7 +19,13 @@ function Search-Google {
  PS > Search-google "guinnes book of record 2019" msedge
       
  PS > Search-google COVID-19 chrome $true ; where '$true' is endabling incongito mode in brave or chrome browsers
-#>
+ .NOTES
+ Currently this version of the script module only supports the following browsers in incognito:
+ * brave
+ * chrome
+ Future versions of the script modules will support incognito version for all browers
+
+ #>
 
      [CmdletBinding()]
 
@@ -35,41 +41,33 @@ function Search-Google {
           [parameter(position = 3)]
           [switch]
           $isIncognito
-          
-          
-     
+               
      )
 
      begin {
           $parsed_string = $searchString.replace(' ', '+');
           $ErrorActionPreference = 'SilentlyContinue'
+          [System.Diagnostics.Process] $proc_object;
      }
      process {
  
           if ( -not $($browser -eq "")) {
-               if ($browser -eq "brave") {
-                    Start-Process brave https://www.google.com/search?q=$parsed_string
-               }
-
                if ($browser -eq "msedge") {
-                    Start-Process microsoft-edge:https://www.google.com/search?q=$parsed_string
-               }
-
-               if($browser -eq "firefox"){
-                    Start-Process firefox https://www.google.com/search?q=$parsed_string
+                     $proc_object = Start-Process -PassThru microsoft-edge:https://www.google.com/search?q=$parsed_string
                }
 
                if ($isIncognito) {
-
-                    cmd /c start $browser  https://www.google.com/search?q=$parsed_string -incognito
-
+                    $proc_object = Start-Process -PassThru $browser -ArgumentList @("https://www.google.com/search?q="+$parsed_string, "-incognito")
                }
- 
+
+               if($browser -ne "msedge" -and -not $isIncognito){
+                    $proc_object = Start-Process -PassThru $browser https://www.google.com/search?q=$parsed_string
+              }
                
           }
      }
      end {
-     
+          return $proc_object;
      }
 
 }
@@ -83,6 +81,11 @@ function Search-DuckDuckGo {
  Search from powershell console
 .DESCRIPTION
  Parse duckduckgo searches on powershell commandline
+ 
+ Currently this version of the script module only supports the following browsers in incognito:
+ * brave
+ * chrome
+ Future versions of the script modules will support incognito version for all browers
 .FUNCTIONALITY
  Search-DuckDuckGo <search string> <browser> <browser options> 
 .EXAMPLE
@@ -91,7 +94,12 @@ function Search-DuckDuckGo {
  PS >  Search-DuckDuckGo "guinnes book of record 2019" msedge
       
  PS >  Search-DuckDuckGo COVID-19 chrome $true ; where '$true' is endabling incongito mode in brave or chrome browsers
-#>
+ .NOTES
+ Currently this version of the script module only supports the following browsers in incognito:
+ * brave
+ * chrome
+ Future versions of the script modules will support incognito version for all browers
+ #>
 
      [CmdletBinding()]
 
@@ -114,33 +122,29 @@ function Search-DuckDuckGo {
 
      begin {
           $parsed_string = $searchString.replace(' ', '+');
-          $ErrorActionPreference = 'SilentlyContinue'
+          $ErrorActionPreference = 'SilentlyContinue';
+          [System.Diagnostics.Process] $proc_object;
      }
      process {
  
           if ( -not $($browser -eq "")) {
-               if ($browser -eq "brave") {
-                    Start-Process brave https://duckduckgo.com/?q=$parsed_string
-               }
-
+               
                if ($browser -eq "msedge") {
-                    Start-Process microsoft-edge:https://duckduckgo.com/?q=$parsed_string
-               }
-
-               if($browser -eq "firefox"){
-                    Start-Process firefox https://duckduckgo.com/?q=$parsed_string
+                     $proc_object = Start-Process -PassThru microsoft-edge:https://duckduckgo.com/?q=$parsed_string
                }
 
                if ($isIncognito) {
-
-                    cmd /c start $browser  https://duckduckgo.com/?q=$parsed_string -incognito
-
+                    $proc_object = Start-Process -PassThru $browser -ArgumentList @("https://duckduckgo.com/?q="+$parsed_string, "-incognito")
                }
+
+               if($browser -ne "msedge" -and -not $isIncognito){
+                    $proc_object = Start-Process -PassThru $browser https://duckduckgo.com/?q=$parsed_string
+              }
                
           }
      }
      end {
-     
+          return $proc_object;
      }
 
 }
@@ -162,7 +166,13 @@ function Search-Bing {
       PS >  Search-Bing "guinnes book of record 2019" msedge
            
       PS >  Search-Bing COVID-19 chrome $true ; where '$true' is endabling incongito mode in brave or chrome browsers
-     #>
+     .NOTES
+      Currently this version of the script module only supports the following browsers in incognito:
+      * brave
+      * chrome
+      Future versions of the script modules will support incognito version for all browers
+
+      #>
      
           [CmdletBinding()]
      
@@ -185,33 +195,28 @@ function Search-Bing {
      
           begin {
                $parsed_string = $searchString.replace(' ', '+');
-               $ErrorActionPreference = 'SilentlyContinue'
+               $ErrorActionPreference = 'SilentlyContinue';
+               [System.Diagnostics.Process] $proc_object;
           }
           process {
       
                if ( -not $($browser -eq "")) {
-                    if ($browser -eq "brave") {
-                         Start-Process brave https://www.bing.com/search?q=$parsed_string
-                    }
-     
+                  
                     if ($browser -eq "msedge") {
-                         Start-Process microsoft-edge:https://www.bing.com/search?q=$parsed_string
+                          $proc_object = Start-Process -PassThru microsoft-edge:https://www.bing.com/search?q=$parsed_string
                     }
-     
-                    if($browser -eq "firefox"){
-                         Start-Process firefox https://www.bing.com/search?q=$parsed_string
-                    }
-     
+
                     if ($isIncognito) {
-     
-                         cmd /c start $browser  https://www.bing.com/search?q=$parsed_string -incognito
-     
+                         $proc_object = Start-Process -PassThru $browser -ArgumentList @("https://www.bing.com/search?q="+$parsed_string, "-incognito")
                     }
-     
+
+                    if ($browser -ne "msedge" -and -not $isIncognito){
+                          $proc_object = Start-Process -PassThru $browser https://www.bing.com/search?q=$parsed_string
+                    }
                }
           }
           end {
-          
+               return $proc_object;
           }
      
      }
@@ -233,6 +238,12 @@ Open-Site <url> <browser> <browser options>
 Open-Site https://thebestwebsite.com/home chrome
 
 PS > Open-Site https://save-the-planet.org microsoft-edge
+.NOTES
+Currently this version of the script module only supports the following browsers in incognito:
+* brave
+* chrome
+Future versions of the script modules will support incognito version for all browers
+
 #>
 
      [CmdletBinding()]
@@ -252,35 +263,29 @@ PS > Open-Site https://save-the-planet.org microsoft-edge
      )
 
      begin {
-          $ErrorActionPreference = 'SilentlyContinue'
+          $ErrorActionPreference = 'SilentlyContinue';
+          [System.Diagnostics.Process] $proc_object;
      }
      process {
 
           if (-not $($url -eq "")) {
-
-               if ($browser -eq "brave") {
-                    Start-Process brave $url
-               }
-              
-               if ($browser -eq "msedge") {
-                    Start-Process microsoft-edge:$url
-               }
-               else{
-                    if ($isIncognito){
-                         cmd /c start $browser $url -incognito
-                    }
-                    else{
-                         Start-Process $browser $url 
-                    }
-
-               }
                
+               if ($browser -eq "msedge") {
+                     $proc_object = Start-Process -PassThru microsoft-edge:$url
+               }
 
-     
+               if ($isIncognito){
+                    $proc_object =  Start-Process -PassThru $browser -ArgumentList @($url, "-incognito")
+                }
+               
+               if ($browser -ne "msedge" -and -not $isIncognito){
+                    $proc_object = Start-Process -PassThru $browser $url 
+               }
+             
           }
      }
      end {
-
+          return $proc_object;
      }
 
 }
@@ -298,8 +303,13 @@ function Search-Youtube {
       Search-Youtube "Latest Hiphop 2020" msedge
 
       PS > Search-Youtube Live chrome
+     .NOTES
+     Currently this version of the script module only supports the following browsers in incognito:
+     * brave
+     * chrome
+     Future versions of the script modules will support incognito version for all browers
      
-     #>
+      #>
      
           [CmdletBinding()]
      
@@ -320,39 +330,35 @@ function Search-Youtube {
           begin {
                $parsed_query = $query.replace(' ', '+');
                $ErrorActionPreference = 'SilentlyContinue'
+               [System.Diagnostics.Process] $proc_object;
           }
           process {
      
                if (-not $($query -eq "")) {
 
-                    if ($browser -eq "brave") {
-                         Open-Site https://youtube.com/results?search_query=$parsed_query brave
-                         
-                    }
-                   
-                    if ($browser -eq "firefox") {
-                         Open-Site https://youtube.com/results?search_query=$parsed_query firefox
-                         
-                    }
-
-                    if ($browser -eq "msedge") {
-                         Open-Site https://youtube.com/results?search_query=$parsed_query msedge
-                         
-                    }
                     
+                         
                     if ($isIncognito){
-                          Open-Site https://youtube.com/results?search_query=$parsed_query $browser -incognito
+                         $proc_object = Open-Site https://youtube.com/results?search_query=$parsed_query $browser -isIncognito
                          
                     }
-                        
-                    
-                    
-     
+                    else 
+                    {
+                         $proc_object = Open-Site https://youtube.com/results?search_query=$parsed_query $browser     
+                    }
           
                }
           }
           end {
-     
+               return $proc_object;
           }
      
      }
+
+     Export-ModuleMember -Function @("Search-Google", 
+                                    "Search-Youtube", 
+                                    "Search-Bing", 
+                                    "Search-DuckDuckGo",
+                                    "Open-Site")
+
+     Export-ModuleMember -Variable @("browser", "searchString", "isIncognito")
