@@ -219,7 +219,7 @@ function Search-Bing {
                return $proc_object;
           }
      
-     }
+}
      
 ###################################################################
 ## Other Search Engine Utility APIs
@@ -353,12 +353,79 @@ function Search-Youtube {
                return $proc_object;
           }
      
-     }
+}
+
+# Search using Google Dorks
+
+function Search-Dorks {
+     
+     <#
+     .SYNOPSIS
+      Search using google dorks from powershell. Supports Powershell:^5
+     .DESCRIPTION
+      Parse search query from powershell commandline to open in browser of choice
+     .FUNCTIONALITY
+      Search-Dorks <search query> <browser>
+     .EXAMPLE
+      Search-Dorks "Latest Hiphop 2020" msedge
+
+      PS > Search-Dork movies 2022 chrome
+     .NOTES
+     Currently this version of the script module only supports the following browsers in incognito:
+     * brave
+     * chrome
+     Future versions of the script modules will support incognito version for all browers
+     
+      #>
+     
+      [CmdletBinding()]
+     
+      Param(
+           [parameter(mandatory = $true, position = 1)]
+           [string]
+           $query,
+ 
+           [parameter(mandatory = $true, position = 2)]
+           [string]
+           $browser,
+ 
+           [parameter(position = 3)]
+           [switch]
+           $isIncognito
+      )
+ 
+      begin {
+           $parsed_query = $query.replace(' ', '+');
+           $ErrorActionPreference = 'SilentlyContinue'
+           [System.Diagnostics.Process] $proc_object;
+      }
+      process {
+ 
+           if (-not $($query -eq "")) {
+
+                
+                     
+                if ($isIncognito){
+                     $proc_object = Search-Google "intitle:index of `'" + $parsed_query + "`' " $browser -isIncognito
+                     
+                }
+                else 
+                {
+                     $proc_object = Search-Google "intitle:index of `'" + $parsed_query + "`' " $browser $browser     
+                }
+      
+           }
+      }
+      end {
+           return $proc_object;
+      }
+}
 
      Export-ModuleMember -Function @("Search-Google", 
                                     "Search-Youtube", 
                                     "Search-Bing", 
                                     "Search-DuckDuckGo",
-                                    "Open-Site")
+                                    "Open-Site",
+                                    "Search-Dorks")
 
      Export-ModuleMember -Variable @("browser", "searchString", "isIncognito")
