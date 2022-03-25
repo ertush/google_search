@@ -25,7 +25,7 @@ To load the latest uptodate module automatically to your powershell or pwsh, add
 ```
 ## Dependecies
 
- None
+ None.
 
 ## Exported Functions
 
