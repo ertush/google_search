@@ -1,4 +1,4 @@
-name: Publish google_search Module to PowerShell Gallery 
+name: Publish PowerShell Gallery 
 on:
   push:
     branches:
