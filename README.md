@@ -3,6 +3,8 @@
 
 ## Google_Search
 
+[![Publish PowerShell Gallery](https://github.com/ertush/google_search/actions/workflows/publish_powershell_gallery.yml/badge.svg)](https://github.com/ertush/google_search/actions/workflows/publish_powershell_gallery.yml)
+
  Script module to use search engine and Open urls from powershell. Supports msedge and chrome among other browsers.
  You can also find the module from [PowershellGallery](https://www.powershellgallery.com). Private browsing otherwise known as incognito mode is only currently supported in brave and chrome browsers by google_search_module. 
 
