@@ -1,0 +1,41 @@
+name: Publish PowerShell Gallery 
+on:
+  push:
+    branches:
+    - 'master'
+    paths:
+    - '../../google_search/test/**'
+    - '../../google_search/**'
+    - '!../../README.md'
+    
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test module
+        id: test_module
+        uses: zyborg/pester-tests-report@v1
+        with:
+          include_paths: tests
+          report_name: module_tests
+          report_title: google_search module tests
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: dump test results
+      shell: pwsh
+      run: |
+        Write-Host 'Total Tests Executed...:  ${{ steps.test_module.outputs.total_count }}'
+        Write-Host 'Total Tests PASSED.....:  ${{ steps.test_module.outputs.passed_count }}'
+        Write-Host 'Total Tests FAILED.....:  ${{ steps.test_module.outputs.failed_count }}'
+
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Publish Module 
+      uses: pcgeek86/publish-powershell-module-action@v20
+      id: publish-module
+      with:
+        NuGetApiKey: ${{ secrets.PS_GALLERY_KEY }}
+  
+   
