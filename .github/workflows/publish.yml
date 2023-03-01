@@ -3,6 +3,10 @@ on:
   push:
     branches:
     - 'master'
+    paths:
+    - '../../google_search/test/**'
+    - '../../google_search/**'
+    - '!../../README.md'
   
     
 jobs:
@@ -13,7 +17,7 @@ jobs:
         id: test_module
         uses: zyborg/pester-tests-report@v1
         with:
-          include_paths: tests
+          include_paths: '../../google_search/tests'
           report_name: module_tests
           report_title: google_search module tests
           github_token: ${{ secrets.GITHUB_TOKEN }}
