@@ -1,3 +1,6 @@
+
+![](./screenshots/google_search_screenshot.png)
+
 ## Google_Search
 
  Script module to use search engine and Open urls from powershell. Supports msedge and chrome among other browsers.
