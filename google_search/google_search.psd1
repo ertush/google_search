@@ -94,11 +94,11 @@ AliasesToExport = @()
 FileList = @("./google_search.psm1", 
              "./google_search.psd1",
              "./google_search.Tests.ps1", 
-             "./test/open-site.Tests.ps1",
-             "./test/search-google.Tests.ps1"
-             "./test/search-bing.Tests.ps1",
-             "./test/search-youtube.Tests.ps1",
-             "./test/search-duckduckgo.Tests.ps1")
+             "./tests/open-site.Tests.ps1",
+             "./tests/search-google.Tests.ps1"
+             "./tests/search-bing.Tests.ps1",
+             "./tests/search-youtube.Tests.ps1",
+             "./tests/search-duckduckgo.Tests.ps1")
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
