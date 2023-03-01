@@ -3,12 +3,8 @@ on:
   push:
     branches:
     - 'master'
-    paths:
-    - '../../google_search/test/**'
-    - '../../google_search/**'
-    - '!../../README.md'
+  
     
-
 jobs:
   test:
     runs-on: ubuntu-latest
