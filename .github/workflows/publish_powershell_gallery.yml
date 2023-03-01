@@ -3,9 +3,7 @@ on:
   push:
     branches:
     - 'master'
-    paths:
-    - '../../google_search/**'
-    - '!../../README.md'
+    
 
 jobs:
   publish:
@@ -13,9 +11,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Ready to Publish Module 
-      uses: pcgeek86/publish-powershell-module-action@v19
+      uses: pcgeek86/publish-powershell-module-action@v20
       id: publish-module
       with:
-        modulePath: ./google_search
         NuGetApiKey: ${{ secrets.PS_GALLERY_KEY }}
    
